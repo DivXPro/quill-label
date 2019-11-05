@@ -4,21 +4,6 @@ import QuillLabelBlot from './quill-label-blot';
 
 const Module = Quill.import('core/module');
 
-const TEMPLATE = [
-  '<select class="ql-select-label">',
-  '<option value ="volvo">Volvo</option>',
-  '<option value ="saab">Saab</option>',
-  '<option value="opel">Opel</option>',
-  '<option value="audi">Audi</option>',
-  '</select>',
-].join('');
-
-const OPTIONS = [
-  { label: '员工姓名', value: 'employee_name' },
-  { label: '入职时间', value: 'hire_date' },
-  { label: '公司名称', value: 'company_name' }
-];
-
 class Label extends Module {
   static register() {
     Quill.register(QuillLabelBlot, true);
@@ -45,7 +30,7 @@ class Label extends Module {
     select.addEventListener('change', event => {
       const index = event.target.options.selectedIndex;
       const option = event.target.options[index];
-      this.save(option.value, option.label);
+      this.save(option.value, option);
     });
     this.hide();
   }
@@ -74,11 +59,11 @@ class Label extends Module {
     this.show();
   }
 
-  save(value, label) {
+  save(opt) {
     const range = this.quill.getSelection(true);
     if (range != null) {
       const index = range.index + range.length;
-      this.quill.insertEmbed(index, 'label', label, Emitter.sources.USER);
+      this.quill.insertEmbed(index, 'label', opt, Emitter.sources.USER);
       this.quill.insertText(index + 1, '', Emitter.sources.USER);
       this.quill.setSelection(index + 2, Emitter.sources.USER);
     }

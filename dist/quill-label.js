@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "0b1e60684c9d0453b91c";
+/******/ 	var hotCurrentHash = "c3f9dea89de670baa71a";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1265,15 +1265,19 @@ emitter_Emitter.sources = {
 const Embed = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default.a.import('blots/embed');
 
 class LabelBlot extends Embed {
-  static create(value) {
+  static create(_ref) {
+    let {
+      label,
+      value
+    } = _ref;
     const node = super.create(value);
 
     if (typeof value === 'string') {
       node.setAttribute('template-label-id', value);
-      node.textContent = value;
+      node.textContent = label;
     } else if (typeof value === 'object') {
-      node.setAttribute('template-label-id', value.id);
-      node.textContent = value.text;
+      node.setAttribute('template-label-id', value);
+      node.textContent = label;
     }
 
     return node;
@@ -1294,17 +1298,6 @@ LabelBlot.tagName = 'span';
 
 
 const Module = external_commonjs_quill_commonjs2_quill_amd_quill_root_Quill_default.a.import('core/module');
-const TEMPLATE = ['<select class="ql-select-label">', '<option value ="volvo">Volvo</option>', '<option value ="saab">Saab</option>', '<option value="opel">Opel</option>', '<option value="audi">Audi</option>', '</select>'].join('');
-const OPTIONS = [{
-  label: '员工姓名',
-  value: 'employee_name'
-}, {
-  label: '入职时间',
-  value: 'hire_date'
-}, {
-  label: '公司名称',
-  value: 'company_name'
-}];
 
 class quill_label_Label extends Module {
   static register() {
@@ -1336,7 +1329,7 @@ class quill_label_Label extends Module {
     select.addEventListener('change', event => {
       const index = event.target.options.selectedIndex;
       const option = event.target.options[index];
-      this.save(option.value, option.label);
+      this.save(option.value, option);
     });
     this.hide();
   }
@@ -1364,12 +1357,12 @@ class quill_label_Label extends Module {
     this.show();
   }
 
-  save(value, label) {
+  save(opt) {
     const range = this.quill.getSelection(true);
 
     if (range != null) {
       const index = range.index + range.length;
-      this.quill.insertEmbed(index, 'label', label, emitter.sources.USER);
+      this.quill.insertEmbed(index, 'label', opt, emitter.sources.USER);
       this.quill.insertText(index + 1, '', emitter.sources.USER);
       this.quill.setSelection(index + 2, emitter.sources.USER);
     }

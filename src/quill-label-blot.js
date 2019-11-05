@@ -3,14 +3,14 @@ import Quill from 'quill'
 const Embed = Quill.import('blots/embed');
 
 class LabelBlot extends Embed {
-  static create(value) {
+  static create({label, value}) {
     const node = super.create(value);
     if (typeof value === 'string') {
       node.setAttribute('template-label-id', value);
-      node.textContent = value;
+      node.textContent = label;
     } else if (typeof value === 'object') {
-      node.setAttribute('template-label-id', value.id);
-      node.textContent = value.text;
+      node.setAttribute('template-label-id', value);
+      node.textContent = label;
     }
     return node;
   }
