@@ -1,8 +1,8 @@
 {
   "name": "quill-label",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
-  "main": "dist/quill-label-min.js",
+  "main": "dist/quill-label.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.js --mode=development",
     "build": "webpack --config webpack.config.js --mode=production --env.minimize; webpack --config webpack.config.js --mode=production; rm dist/quill-label",
