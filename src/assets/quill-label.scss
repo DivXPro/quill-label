@@ -1,0 +1,21 @@
+.ql-select-tooltip {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 5px #ddd;
+  color: textColor;
+  padding: 5px 12px;
+  white-space: nowrap;
+  &:before {
+    content: "选择标签:";
+    line-height: 26px;
+    margin-right: 8px;
+  }
+}
+
+.ql-label {
+  background-color: #ddd;
+  padding: 1px 4px;
+  margin: 0 4px;
+  border-radius: 2px;
+}
