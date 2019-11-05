@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c3f9dea89de670baa71a";
+/******/ 	var hotCurrentHash = "471e43eea12ccba785c9";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1329,7 +1329,7 @@ class quill_label_Label extends Module {
     select.addEventListener('change', event => {
       const index = event.target.options.selectedIndex;
       const option = event.target.options[index];
-      this.save(option.value, option);
+      this.save(option);
     });
     this.hide();
   }

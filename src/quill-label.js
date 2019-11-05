@@ -30,7 +30,7 @@ class Label extends Module {
     select.addEventListener('change', event => {
       const index = event.target.options.selectedIndex;
       const option = event.target.options[index];
-      this.save(option.value, option);
+      this.save(option);
     });
     this.hide();
   }
