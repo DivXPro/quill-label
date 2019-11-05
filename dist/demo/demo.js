@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "471e43eea12ccba785c9";
+/******/ 	var hotCurrentHash = "653ca8da4f3de5d9f16f";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1270,7 +1270,11 @@ class LabelBlot extends Embed {
       label,
       value
     } = _ref;
-    const node = super.create(value);
+    console.log('create', label, value);
+    const node = super.create({
+      label,
+      value
+    });
 
     if (typeof value === 'string') {
       node.setAttribute('template-label-id', value);
@@ -1284,7 +1288,10 @@ class LabelBlot extends Embed {
   }
 
   static value(node) {
-    return node.getAttribute('template-label-id');
+    return {
+      label: node.textContent,
+      value: node.getAttribute('template-label-id')
+    };
   }
 
 }
@@ -1396,6 +1403,7 @@ __webpack_require__.r(__webpack_exports__);
  // import better-table styles file
 
 
+Quill.debug('log');
 Quill.register({
   'modules/label': src_quill_label_js__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, true);

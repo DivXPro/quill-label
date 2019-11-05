@@ -1,7 +1,7 @@
 import QuillLabel from 'src/quill-label.js'
 // import better-table styles file
 import 'src/assets/quill-label.scss'
-
+Quill.debug('log');
 Quill.register({
   'modules/label': QuillLabel
 }, true)
@@ -22,7 +22,7 @@ window.onload = () => {
           { label: '入职时间', value: 'hire_date' },
           { label: '公司名称', value: 'company_name' }
         ],
-      }
-    }
+      },
+    },
   });
 }

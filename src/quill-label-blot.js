@@ -4,7 +4,8 @@ const Embed = Quill.import('blots/embed');
 
 class LabelBlot extends Embed {
   static create({label, value}) {
-    const node = super.create(value);
+    console.log('create', label, value);
+    const node = super.create({ label, value });
     if (typeof value === 'string') {
       node.setAttribute('template-label-id', value);
       node.textContent = label;
@@ -16,7 +17,7 @@ class LabelBlot extends Embed {
   }
 
   static value(node) {
-    return node.getAttribute('template-label-id');
+    return { label: node.textContent, value: node.getAttribute('template-label-id')};
   }
 }
 
